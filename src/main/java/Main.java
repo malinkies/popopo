@@ -4,10 +4,10 @@ import java.util.List;
 1. Описать базовый класс Transport
 2. Описать потомков Bus, Tram, Trolleybus
 3. Реализовать методы
-    - Чтение из файла в список Transport
-    - Чтение из файла в списки по типам
-    - По списку вывести в упорядоченном виде парковые номера и время начала движения
-    - По списку вывести в упорядоченном виде номера маршрутов, время начала и окончания движения маршрута
+    + Чтение из файла в список Transport
+    + Чтение из файла в списки по типам
+    + По списку вывести в упорядоченном виде парковые номера и время начала движения
+    + По списку вывести в упорядоченном виде номера маршрутов, время начала и окончания движения маршрута
     - По списку вывести кол-во разных маршрутов
     - По списку вывести кол-во разных транспортных средств
     - По списку вывести номер маршрута и кол-во транспортных средств на нем
@@ -16,13 +16,14 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
-        List<Transport> lst = new ArrayList<>();
         TransportService service = new TransportService();
-        lst = service.readAll();
+        List<Transport> lst = service.readAll();
         System.out.println(lst);
 
-        List<Bus> lstBus = new ArrayList<>();
-        lstBus = service.readBus();
+        List<Bus> lstBus = service.readBus();
         System.out.println(lstBus);
+
+        PrintService.printNum_StartTime();
+        PrintService.printRouteNum_StartTime_EndTime();
     }
 }

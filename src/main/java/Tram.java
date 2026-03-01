@@ -1,5 +1,5 @@
 public class Tram extends Transport{
-    public Tram(String workTimeEnd, String workTimeBegin, String routeNumber, String number) {
+    public Tram(String number, String routeNumber, String workTimeBegin, String workTimeEnd) {
         super(TranspType.tram, number, routeNumber, workTimeBegin, workTimeEnd);
     }
     @Override

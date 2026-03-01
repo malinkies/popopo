@@ -1,5 +1,5 @@
 public class Bus extends Transport {
-    public Bus(String workTimeEnd, String workTimeBegin, String routeNumber, String number) {
+    public Bus(String number, String routeNumber, String workTimeBegin, String workTimeEnd) {
         super(TranspType.bus, number, routeNumber, workTimeBegin, workTimeEnd);
     }
     @Override

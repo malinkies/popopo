@@ -1,5 +1,5 @@
 public class Trolleybus extends Transport{
-    public Trolleybus(String workTimeEnd, String workTimeBegin, String routeNumber, String number) {
+    public Trolleybus(String number, String routeNumber, String workTimeBegin, String workTimeEnd) {
         super(TranspType.trolleybus, number, routeNumber, workTimeBegin, workTimeEnd);
     }
 
