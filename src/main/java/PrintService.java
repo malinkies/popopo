@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class PrintService {
     private static final TransportService service = new TransportService();
@@ -67,4 +66,60 @@ public class PrintService {
         }
         System.out.println();
     }
+
+    public static void printRoutesAmount() {
+        List<Transport> data = service.readAll();
+        List<String> routes = new ArrayList<>();
+        for (Transport t : data) {
+            if (!routes.contains(t.getRouteNumber())) {
+                routes.add(t.getRouteNumber());
+            }
+        }
+        System.out.println(routes.size() + " ");
+    }
+
+    public static void printTransportAmount() {
+        List<Transport> data = service.readAll();
+        List<String> transports = new ArrayList<>();
+        for (Transport t : data) {
+            if (!transports.contains(t.getNumber())) {
+                transports.add(t.getNumber());
+            }
+        }
+        System.out.println(transports.size() + " ");
+    }
+
+    public static void printRouteNum_TranspAmount() {
+        List<Transport> data = service.readAll();
+        Map<String, Set<String>> res = new HashMap<>();
+
+        for (Transport t : data) {
+            if (res.containsKey(t.getRouteNumber())) {
+                res.get(t.getRouteNumber()).add(t.getNumber());
+            } else {
+                res.put(t.getRouteNumber(), new HashSet<>(List.of(t.getNumber())));
+            }
+        }
+
+        List<String> keys = new ArrayList<>(res.keySet());
+        int n = keys.size();
+        for (int i = 0; i < n - 1; i++) {
+            boolean flag = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (isStr1BiggerThanStr2(keys.get(j), keys.get(j + 1))) {
+                    String temp = keys.get(j);
+                    keys.set(j, keys.get(j + 1));
+                    keys.set(j + 1, temp);
+                    flag = true;
+                }
+            }
+            if (!flag) break;
+        }
+
+        for (String s : keys) {
+            System.out.print("маршрут (" + s + ") - " + res.get(s).size() + " трансп.; ");
+        }
+        System.out.println();
+    }
+
 }
